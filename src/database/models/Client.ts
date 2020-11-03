@@ -4,11 +4,12 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  BaseEntity,
 } from 'typeorm';
 
 @Entity('clients')
-class Client {
-  @PrimaryGeneratedColumn('uuid')
+class Client extends BaseEntity {
+  @PrimaryGeneratedColumn()
   id: string;
 
   @Column()
