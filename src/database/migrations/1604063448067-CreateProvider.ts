@@ -38,6 +38,11 @@ export class CreateProvider1604063448067 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: 'company_id',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
             name: 'is_active',
             type: 'boolean',
             default: true,

@@ -29,6 +29,11 @@ export class CreateClient1604064273676 implements MigrationInterface {
             isUnique: true,
           },
           {
+            name: 'provider_id',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',

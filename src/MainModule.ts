@@ -5,10 +5,15 @@ import RepositoryModule from './repository/RepositoryModule';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import { ClientController } from './controllers/ClientController';
 import { ClientService } from './services/ClientService';
+import { GraphQLModule } from '@nestjs/graphql';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
+    GraphQLModule.forRoot({
+      autoSchemaFile: 'schema.gql',
+      playground: true,
+    }),
     RepositoryModule
   ],
   controllers: [ProviderController, ClientController],

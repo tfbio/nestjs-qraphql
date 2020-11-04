@@ -6,21 +6,16 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   BaseEntity,
-  ManyToOne,
-  JoinColumn,
+  OneToMany,
 } from 'typeorm';
 import Provider from './Provider';
 
 @ObjectType()
-@Entity('clients')
-class Client extends BaseEntity {
+@Entity('providers')
+class Company extends BaseEntity {
   @Field()
   @PrimaryGeneratedColumn()
   id: string;
-
-  @Field()
-  @Column()
-  person_id: string;
 
   @Field()
   @Column()
@@ -36,7 +31,11 @@ class Client extends BaseEntity {
 
   @Field()
   @Column()
-  provider_id: string
+  logo: string;
+
+  @Field()
+  @Column({ default: true })
+  is_active: boolean;
 
   @Field()
   @CreateDateColumn()
@@ -46,11 +45,11 @@ class Client extends BaseEntity {
   @UpdateDateColumn()
   updated_at: Date;
 
-  // Associations
+  //Associations
 
-  @ManyToOne(() => Provider, provider => provider.clientConnection)
-  @JoinColumn({name: 'provider_id'})
-  providerConnection: Promise<Provider>
+  @OneToMany(() => Provider, provider => provider.companyConnection)
+  providerConnection: Promise<Provider[]>;
+
 }
 
-export default Client;
+export default Company;
